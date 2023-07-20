@@ -1,0 +1,10 @@
+/ 1.4
+
+SELECT DisplayName, COUNT(Id),(COUNT(Id)/(SELECT COUNT(Id) FROM Comments)*100 AS percent GROUP BY UserId)
+FROM Users 
+JOIN Comment ON Comments.UserId = Users.Id
+GROUP BY DisplayName
+ORDER BY COUNT(PostId) DESC
+LIMIT 3
+
+

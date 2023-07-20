@@ -1,0 +1,6 @@
+/ 1.2
+
+SELECT YEAR(CreationDate.posts), COUNT(posts.CreationDate), COUNT(Comments.CreationDate)
+FROM posts
+JOIN Comments USING(CreationDate)
+GROUP BY YEAR(CreationDate.posts)

@@ -1,0 +1,8 @@
+/ 1.3
+
+SELECT DisplayName, COUNT(Id)
+FROM Users
+JOIN Comment ON Comments.UserId = Users.Id
+GROUP BY DisplayName
+ORDER BY COUNT(PostId) DESC
+LIMIT 3

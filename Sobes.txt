@@ -1,0 +1,20 @@
+/ 1
+SELECT * 
+FROM Users
+JOIN Comments on Users.Id = Comments.UserId
+JOIN posts on Users.Id = posts.OwnerUserId
+WHERE Comments.CreationDate is NULL AND posts.CreationDate is NULL
+
+/ 1.1
+SELECT * 
+FROM Users
+JOIN Comments on Users.Id = Comments.UserId
+JOIN posts on Users.Id = posts.OwnerUserId
+WHERE EXISTS (SELECT CreationDate from Comments
+		where CreationDate is NULL
+		UNION
+		SELECT CreationDate from posts
+		where CreationDate is NULL)
+
+
+
